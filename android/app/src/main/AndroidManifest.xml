@@ -1,6 +1,7 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.example.myapp">
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
-        android:label="myapp"
+        android:label="Mobile Learning"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
