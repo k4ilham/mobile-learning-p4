@@ -76,7 +76,7 @@ class MyHeader extends StatelessWidget {
               controller: searchController,
               onChanged: onSearchChanged,
               decoration: InputDecoration(
-                hintText: 'Search your topic',
+                hintText: 'Mau Belajar Apa Hari Ini?',
                 border: InputBorder.none,
                 icon: Icon(Icons.search, color: Colors.grey[600]),
               ),
