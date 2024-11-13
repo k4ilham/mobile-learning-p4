@@ -1,7 +1,9 @@
-// ignore_for_file: library_private_types_in_public_api, prefer_const_constructors
+// ignore_for_file: library_private_types_in_public_api, prefer_final_fields
 
 import 'dart:convert';
+
 import 'package:flutter/services.dart';
+
 import '../core.dart';
 
 class Home extends StatefulWidget {
@@ -16,6 +18,17 @@ class _HomeState extends State<Home> {
   List<dynamic> _filteredData = [];
   List<dynamic> _originalData = [];
 
+  @override
+  void initState() {
+    super.initState();
+    loadJsonData().then((data) {
+      setState(() {
+        _originalData = data;
+        _filteredData = data;
+      });
+    });
+  }
+
   Future<List<dynamic>> loadJsonData() async {
     try {
       final String response =
@@ -29,7 +42,6 @@ class _HomeState extends State<Home> {
   void _filterData(String query) {
     if (query.isEmpty || query.length < 3) {
       setState(() {
-        // If query is less than 3 characters, show the original data
         _filteredData = _originalData;
       });
       return;
@@ -37,10 +49,10 @@ class _HomeState extends State<Home> {
 
     setState(() {
       _filteredData = _originalData.where((item) {
-        String title = item['title'] ?? '';
-        String description = item['description'] ?? '';
-        return title.toLowerCase().contains(query.toLowerCase()) ||
-            description.toLowerCase().contains(query.toLowerCase());
+        final title = item['title']?.toLowerCase() ?? '';
+        final description = item['description']?.toLowerCase() ?? '';
+        final searchQuery = query.toLowerCase();
+        return title.contains(searchQuery) || description.contains(searchQuery);
       }).toList();
     });
   }
@@ -49,40 +61,26 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: whiteColor,
-      body: FutureBuilder<List<dynamic>>(
-        future: loadJsonData(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          } else if (snapshot.hasError) {
-            return Center(child: Text('Error: ${snapshot.error}'));
-          }
-
-          if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return const Center(child: Text('No data available.'));
-          }
-
-          final List<dynamic> data = snapshot.data!;
-
-          // Store original data to reset the filtered data when necessary
-          _originalData = data;
-          _filteredData = data;
-
-          return Column(
-            children: [
-              // Header Section with search input
-              MyHeader(
-                  searchController: _searchController,
-                  onSearchChanged: _filterData),
-              const SizedBox(height: 20),
-              // Categories Section
-              CategoryHeader(),
-              CategoryBody(data: _filteredData),
-              // Bottom Navigation Bar
-              BottomNavBar(),
-            ],
-          );
-        },
+      body: Column(
+        children: [
+          // Header Section with search input
+          MyHeader(
+            searchController: _searchController,
+            onSearchChanged: _filterData,
+          ),
+          const SizedBox(height: 20),
+          // Categories Section
+          // ignore: prefer_const_constructors
+          CategoryHeader(),
+          if (_filteredData.isEmpty)
+            const Expanded(
+              child: Center(child: Text('No data available.')),
+            )
+          else
+            CategoryBody(data: _filteredData),
+          // Bottom Navigation Bar
+          const BottomNavBar(),
+        ],
       ),
     );
   }
@@ -103,13 +101,13 @@ class MyHeader extends StatelessWidget {
     return MyContainer(
       containerColor: primaryColor,
       margin: const EdgeInsets.all(0),
-      borderRadius: BorderRadius.only(
+      borderRadius: const BorderRadius.only(
         bottomLeft: Radius.circular(25),
         bottomRight: Radius.circular(25),
       ),
       children: [
         const SizedBox(height: 20),
-        MyText(
+        const MyText(
           titleText: 'Hello',
           titleStyle: TextStyle(
             color: whiteColor,
@@ -117,7 +115,7 @@ class MyHeader extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        MyText(
+        const MyText(
           titleText: 'Good Morning',
           titleStyle: TextStyle(
             color: whiteColor,
