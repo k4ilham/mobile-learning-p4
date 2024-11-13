@@ -31,7 +31,9 @@ dependencies:
   flutter:
     sdk: flutter
 
+  flutter_cached_pdfview: ^0.4.2
   get: ^4.6.6
+  youtube_player_flutter: ^8.1.2
 
 
   # The following adds the Cupertino Icons font to your application.

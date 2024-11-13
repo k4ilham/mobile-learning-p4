@@ -88,7 +88,7 @@ class CategoryGrid extends StatelessWidget {
         itemBuilder: (context, index) {
           final program = data[index];
           return GestureDetector(
-            onTap: () => Get.to(Courselist(categoryData: program)),
+            onTap: () => Get.to(Courselist(listData: program)),
             child: MyCard(
               title: program['title'] ?? 'No Title',
               description: program['description'] ?? '0 Courses',

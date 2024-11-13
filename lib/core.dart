@@ -2,6 +2,8 @@ export 'package:flutter/material.dart';
 export 'package:flutter/services.dart';
 export 'package:get/get.dart';
 export 'dart:convert';
+export 'package:youtube_player_flutter/youtube_player_flutter.dart';
+export 'package:flutter_cached_pdfview/flutter_cached_pdfview.dart';
 
 //utils
 export 'utils/colors.dart';
@@ -19,3 +21,6 @@ export 'widget/my_header.dart';
 export 'pages/splash.dart';
 export 'pages/home.dart';
 export 'pages/course_list.dart';
+export 'pages/course_detail.dart';
+export 'pages/course_video.dart';
+export 'pages/course_pdf.dart';

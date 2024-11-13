@@ -1,9 +1,9 @@
 import '../core.dart';
 
 class Courselist extends StatefulWidget {
-  final Map<String, dynamic> categoryData;
+  final Map<String, dynamic> listData;
 
-  const Courselist({super.key, required this.categoryData});
+  const Courselist({super.key, required this.listData});
 
   @override
   _CourselistState createState() => _CourselistState();
@@ -20,7 +20,7 @@ class _CourselistState extends State<Courselist> {
 
   Future<void> _loadData() async {
     try {
-      final courses = widget.categoryData['course'] as List<dynamic>? ?? [];
+      final courses = widget.listData['course'] as List<dynamic>? ?? [];
 
       setState(() {
         _filteredData = courses;
@@ -37,7 +37,7 @@ class _CourselistState extends State<Courselist> {
       body: Column(
         children: [
           MyHeader(
-            titleText: widget.categoryData['title'] ?? 'Courses',
+            titleText: widget.listData['title'] ?? 'Courses',
             showBackButton: true,
           ),
           const SizedBox(height: 20),
@@ -59,21 +59,25 @@ class CourseList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
+    return ListView.builder(
       itemCount: data.length,
-      separatorBuilder: (context, index) => const Divider(), // Divider garis
       itemBuilder: (context, index) {
         final course = data[index];
-        return ListTile(
-          contentPadding:
-              const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          leading: Image.asset(
-              imageSplash), // Ganti dengan image dari course jika perlu
-          title: Text(course['title'] ?? 'No Title'),
-          subtitle: Text(course['description'] ?? 'No description'),
-          onTap: () {
-            // Logika jika ingin menambahkan aksi ketika item ditekan
-          },
+        return Card(
+          elevation: 5, // Menambahkan shadow
+          margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10), // Rounded corners
+          ),
+          child: ListTile(
+            contentPadding:
+                const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            leading: Image.asset(
+                imageSplash), // Ganti dengan image dari course jika perlu
+            title: Text(course['title'] ?? 'No Title'),
+            subtitle: Text(course['description'] ?? 'No description'),
+            onTap: () => Get.to(CourseDetail(listData: course)),
+          ),
         );
       },
     );
