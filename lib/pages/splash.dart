@@ -72,7 +72,7 @@ class MainContainer extends StatelessWidget {
         const SizedBox(height: 20),
         Center(
           child: MyButton(
-            buttonText: 'Get Started',
+            buttonText: 'Ayo Mulai',
             buttonColor: primaryColor,
             textColor: whiteColor,
             onPressed: () {
