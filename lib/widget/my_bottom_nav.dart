@@ -23,7 +23,7 @@ class BottomNavBar extends StatelessWidget {
       items: const [
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
-          label: 'Home',
+          label: 'Beranda',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.bookmark),
@@ -31,7 +31,7 @@ class BottomNavBar extends StatelessWidget {
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.info),
-          label: 'About',
+          label: 'Tentang',
         ),
       ],
     );
@@ -43,14 +43,14 @@ class BottomNavBar extends StatelessWidget {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Text("Coming Soon"),
-          content: const Text("This feature is under development."),
+          title: const Text("Segera Hadir"),
+          content: const Text("Fitur ini sedang dalam pengembangan."),
           actions: <Widget>[
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop(); // Close the dialog
               },
-              child: const Text("Close"),
+              child: const Text("Tutup"),
             ),
           ],
         );
@@ -64,13 +64,13 @@ class BottomNavBar extends StatelessWidget {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Text("About This App"),
+          title: const Text("Tentang Aplikasi Ini"),
           content: const Text(
-            "Mobile Learning Application for Universitas Negeri Semarang\n\n"
-            "This app provides educational resources for students, "
-            "including courses, videos, and interactive content. "
-            "It aims to enhance learning through mobile technology.\n\n"
-            "Developer: Ilham Maulana\n"
+            "Aplikasi Mobile Learning untuk Universitas Negeri Semarang\n\n"
+            "Aplikasi ini menyediakan sumber daya pendidikan bagi mahasiswa, "
+            "termasuk kursus, video, dan konten interaktif. "
+            "Tujuan aplikasi ini adalah untuk meningkatkan pembelajaran melalui teknologi mobile.\n\n"
+            "Pengembang: Ilham Maulana\n"
             "Email: k4ilham@gmail.com\n"
             "Website: www.inercorp.com",
             style: TextStyle(fontSize: 16),
@@ -80,7 +80,7 @@ class BottomNavBar extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).pop(); // Close the dialog
               },
-              child: const Text("Close"),
+              child: const Text("Tutup"),
             ),
           ],
         );
