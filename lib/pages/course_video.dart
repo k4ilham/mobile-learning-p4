@@ -58,7 +58,7 @@ class _CourseVideoState extends State<CourseVideo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: whiteColor,
+      backgroundColor: blackColor,
       body: Column(
         children: [
           MyHeader(

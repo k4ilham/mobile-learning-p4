@@ -104,7 +104,7 @@ class CourseDetailList extends StatelessWidget {
             onTap: () {
               // Navigate to the correct screen based on type
               if (chapter['type'] == 'youtube') {
-                Get.to(CourseVideo(listData: chapter)); // For YouTube video
+                Get.to(CourseVideo(listData: chapter)); 
               } else if (chapter['type'] == 'pdf') {
                 Get.to(CoursePdf(listData: chapter));
               } else {
