@@ -21,8 +21,9 @@ class MyCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
+          const SizedBox(height: 10),
           Image.asset(
             imagePath, // Use dynamic image path here
             width: 100,

@@ -1,7 +1,7 @@
 [
     {
-      "title": "Pemrograman",
-      "description": "5 Course",
+      "title": "Informatika",
+      "description": "1 Course",
       "image": "assets/images/splash.png",
       "course": [
         {
@@ -57,7 +57,7 @@
       ]
     },
     {
-      "title": "Bahasa",
+      "title": "Data Science",
       "description": "2 Course",
       "image": "assets/images/splash.png",
       "course": [
@@ -87,37 +87,5 @@
           ]
         }
       ]
-    },
-    {
-        "title": "Bahasa",
-        "description": "2 Course",
-        "image": "assets/images/splash.png",
-        "course": [
-          {
-            "title": "Mobile Learning",
-            "description": "Mobile Learning",
-            "image": "assets/images/splash.png",
-            "chapter": [
-              {
-                "title": "chapter 1",
-                "description": "",
-                "image": "assets/images/splash.png",
-                "status": "active",
-                "type": "pdf",
-                "link_youtube": "",
-                "link_pdf": "https://www.qeios.com/read/GKPOHZ/pdf"
-              },
-              {
-                "title": "chapter 2",
-                "description": "",
-                "image": "assets/images/splash.png",
-                "status": "active",
-                "type": "youtube",
-                "link_youtube": "GSSzDIpyBuM",
-                "link_pdf": ""
-              }
-            ]
-          }
-        ]
-      }
+    }
   ]
